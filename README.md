@@ -1,8 +1,44 @@
-# my app
+# MyTopBooks App
 
-## folder structure
+- PERN project with rich test coverage,
+- app to store information about my personal top novels (displayed as a table),
 
-my-html-app/
-├── index.html
-├── Dockerfile
-└── Jenkinsfile
+## Acceptance Criteria
+
+- React.js -> form (title, author, date of publishing, genre, description), possibility to update or delete data, searchbox, pagination,
+- Node.js (express, pg, cors) -> API to create, read, update or delete books related entries,
+- postgreSQL -> database to store books related entries,
+- Playwright -> e2e tests, Postman & Newman -> API tests, k6 -> load tests, Percy -> visual tests,
+- Git & GitHub -> version control system, external code repository,
+- Jenkins -> ci/cd pipeline triggered after every push to external repository,
+
+- nice to have: Docker, Kubernetes, husky, prettier, ESLint, Cucumber, test documentation (user stories, test scenarios & test cases), API documentation (Swagger), test reporter & test results notification,
+
+## (Example) Project Structure
+
+```
+/
+├── public/               # Static files
+│   └── index.html        # Frontend UI
+├── tests/                # Test files
+│   ├── e2e/              # Playwright E2E tests
+│   └── unit/             # Jest unit tests
+├── k6/                   # k6 load tests
+├── postman/              # Postman API tests
+├── .env                  # Environment variables
+├── .eslintrc.js          # ESLint configuration
+├── .prettierrc           # Prettier configuration
+├── .gitignore            # Git ignore file
+├── docker-compose.yml    # Docker Compose configuration
+├── Dockerfile            # Docker configuration
+├── Jenkinsfile           # Jenkins pipeline
+├── package.json          # Node.js dependencies
+├── server.js             # Express server
+├── tsconfig.json         # TypeScript configuration
+└── README.md             # Project documentation
+```
+
+## Prerequisites
+
+- Docker daemon (e.g. Rancher Desktop),
+- node.js,
