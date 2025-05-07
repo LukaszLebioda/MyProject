@@ -1,0 +1,21 @@
+# docker compose up -d db (to spin up docker container with pg image)
+# docker ps -a (to list all the containers)
+# docker exec -it db psql -U postgres (to use command in container)
+# \l (to list databases), \dt (to list tables), exit (to exit psql)
+
+services:
+  db:
+    container_name: db
+    image: postgres:12
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata: {}

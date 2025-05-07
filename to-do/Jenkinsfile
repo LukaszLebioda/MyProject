@@ -1,0 +1,84 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:18-alpine'
+        }
+    }
+    
+    environment {
+        HOME = '.'
+        DOCKER_COMPOSE = 'docker-compose'
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Setup') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        
+        stage('Lint') {
+            steps {
+                sh 'npm run lint'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh 'docker-compose build'
+            }
+        }
+        
+        stage('Unit Tests') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        
+        stage('Start Services') {
+            steps {
+                sh 'docker-compose up -d'
+                // Give the services some time to start up
+                sh 'sleep 10'
+            }
+        }
+        
+        stage('API Tests') {
+            steps {
+                sh 'npm run test:api'
+            }
+        }
+        
+        stage('E2E Tests') {
+            steps {
+                sh 'npx playwright install --with-deps chromium'
+                sh 'npx tsc --noEmit -p tsconfig.json' // Type-check TypeScript files
+                sh 'npm run test:e2e'
+            }
+        }
+        
+        stage('Load Tests') {
+            steps {
+                sh 'docker run --rm --network="host" -v ${WORKSPACE}/k6:/k6 grafana/k6 run /k6/load-test.js'
+            }
+        }
+    }
+    
+    post {
+        always {
+            sh 'docker-compose down'
+            
+            // Archive test results
+            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+            
+            // Clean up
+            cleanWs()
+        }
+    }
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Form App</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f5f7fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        width: 90%;
+        max-width: 500px;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #555;
+        font-weight: 500;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: border 0.3s ease;
+      }
+
+      input:focus {
+        border-color: #4a90e2;
+        outline: none;
+      }
+
+      button {
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #357abd;
+      }
+
+      .success-message {
+        color: #2ecc71;
+        margin-top: 1rem;
+        text-align: center;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Simple Form App</h1>
+      <form id="dataForm">
+        <div class="form-group">
+          <label for="userInput">Enter your data:</label>
+          <input type="text" id="userInput" placeholder="Type something..." required />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      <p id="successMessage" class="success-message">Data successfully saved!</p>
+    </div>
+
+    <script>
+      document.getElementById("dataForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const userInput = document.getElementById("userInput").value;
+
+        try {
+          const response = await fetch("/api/data", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ data: userInput }),
+          });
+
+          if (response.ok) {
+            document.getElementById("successMessage").style.display = "block";
+            document.getElementById("userInput").value = "";
+
+            // Hide success message after 3 seconds
+            setTimeout(() => {
+              document.getElementById("successMessage").style.display = "none";
+            }, 3000);
+          } else {
+            alert("Error saving data");
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert("An error occurred");
+        }
+      });
+    </script>
+  </body>
+</html>

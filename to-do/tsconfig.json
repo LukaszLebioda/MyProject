@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*"]
+    },
+    "types": ["node", "@playwright/test", "jest"]
+  },
+  "include": ["tests/**/*.ts", "**/*.d.ts"],
+  "exclude": ["node_modules"]
+}

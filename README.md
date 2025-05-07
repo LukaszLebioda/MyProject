@@ -5,6 +5,7 @@
 
 ## Acceptance Criteria
 
+- ESLint + Prettier + eslint-config-prettier -> code linter & formatter configuration,
 - React.js -> form (title, author, date of publishing, genre, description), possibility to update or delete data, searchbox, pagination,
 - Node.js (express, pg, cors) -> API to create, read, update or delete books related entries,
 - postgreSQL -> database to store books related entries,
@@ -12,7 +13,7 @@
 - Git & GitHub -> version control system, external code repository,
 - Jenkins -> ci/cd pipeline triggered after every push to external repository,
 
-- nice to have: Docker, Kubernetes, husky, prettier, ESLint, Cucumber, test documentation (user stories, test scenarios & test cases), API documentation (Swagger), test reporter & test results notification,
+- nice to have: Docker, Kubernetes, husky, Cucumber, test documentation (user stories, test scenarios & test cases), API documentation (Swagger), test reporter & test results notification,
 
 ## (Example) Project Structure
 
