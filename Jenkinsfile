@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Welcome 1') {
       steps {
-        echo 'Before git clone'
+        ssh 'echo "Before git clone"'
       }
     }
     stage('Check code') {
@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Welcome 2') {
       steps {
-        echo 'After git cloneee'
+        ssh 'echo "After git cloneeee"'
       }
     }
 
