@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Check code') {
       steps {
-        git(url: 'https://github.com/LukaszLebioda/MyProject', branch: 'master')
+        git(url: 'https://github.com/LukaszLebioda/MyProject.git', branch: 'master')
       }
     }
 
