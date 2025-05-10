@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Welcome 2') {
       steps {
-        echo 'After git clone'
+        echo 'After git cloneee'
       }
     }
 
