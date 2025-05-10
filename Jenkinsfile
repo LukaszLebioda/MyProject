@@ -13,12 +13,5 @@ pipeline {
         git(url: 'https://github.com/LukaszLebioda/MyProject', branch: 'master')
       }
     }
-
-    stage('Welcome') {
-      steps {
-        echo '"Hello from Jenkins"'
-      }
-    }
-
   }
 }
