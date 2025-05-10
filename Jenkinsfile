@@ -14,5 +14,11 @@ pipeline {
       }
     }
 
+    stage('Welcome') {
+      steps {
+        echo '"Hello from Jenkins"'
+      }
+    }
+
   }
 }
