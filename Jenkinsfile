@@ -4,7 +4,6 @@ pipeline {
     stage('Welcome 1') {
       steps {
         echo 'Before git clone'
-        echo 'Hello world'
       }
     }
     stage('Check code') {
@@ -15,7 +14,6 @@ pipeline {
     stage('Welcome 2') {
       steps {
         echo 'After git clone'
-        echo 'Hello world'
       }
     }
 
