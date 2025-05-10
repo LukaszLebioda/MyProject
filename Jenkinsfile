@@ -1,17 +1,23 @@
 pipeline {
   agent any
   stages {
-    stage('Welcome') {
-      sh '''
-        echo "Welcome to Jenkins"
-        echo "This is a simple pipeline"
-        echo "We will build and test the code"
-      '''
+    stage('Welcome 1') {
+      steps {
+        echo 'Before git clone'
+        echo 'Hello world'
+      }
     }
     stage('Check code') {
       steps {
         git(url: 'https://github.com/LukaszLebioda/MyProject.git', branch: 'master')
       }
     }
+    stage('Welcome 2') {
+      steps {
+        echo 'After git clone'
+        echo 'Hello world'
+      }
+    }
+
   }
 }
