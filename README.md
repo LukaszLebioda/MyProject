@@ -1,8 +1,25 @@
 # MyTopBooks App
 
 - app to store information about my personal top novels (displayed as a table),
-- created with MERN stack,
+- created with MERN stack (mongo db, express, react.js, node.js),
 - covered with tests: e2e, API, load, visual,
+
+# Prerequisites
+
+## Backend
+
+- node.js (with express, dotenv),
+  `npm init -y` -> to initiate project with package.json,
+  `npm install express` -> to install express.js for building API,
+  `npm install -g nodemon` -> to watch changes in server.js file,
+  `npm install dotenv` -> to load from .env file into process.env,
+
+## Frontend
+
+- node.js (with supertest),
+  `npm init -y` -> to initiate project with package.json,
+  `npm install supertest --save-dev ` -> to install supertest for testing API,
+  `npm install --save-dev jest` -> to use jest testing library (describe, it, expect),
 
 <!-- ## Acceptance Criteria
 
@@ -15,7 +32,7 @@
 - Git & GitHub -> version control system, external code repository,
 - Jenkins -> ci/cd pipeline triggered after every push to external repository (alternative -> GitHub Actions),
 
-- nice to have: Supertest, Docker, Kubernetes, husky, Cucumber, test documentation (user stories, test scenarios & test cases), API documentation (Swagger), test reporter & test results notification,
+- nice to have: Supertest, JSON SCHEMA, Docker, Kubernetes, husky, Cucumber, test documentation (user stories, test scenarios & test cases), API documentation (Swagger), test reporter & test results notification,
 
 ## (Example) Project Structure
 
