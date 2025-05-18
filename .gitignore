@@ -1,12 +1,11 @@
 # Miscellanea
-archive/
 to-do/
 
 # Dependencies
 **/node_modules/
 
-# # Environment variables
-# .env
+# Environment variables
+backend/.env
 
 # # Testing
 # playwright-report/

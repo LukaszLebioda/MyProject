@@ -1,4 +1,4 @@
-# MyTopBooks App
+# MyTopBooks App (Monorepo)
 
 - app to store information about my personal top novels (displayed as a table),
 - created with MERN stack (mongo db, express, react.js, node.js),
@@ -8,18 +8,33 @@
 
 ## Backend
 
-- node.js (with express, dotenv),
-  `npm init -y` -> to initiate project with package.json,
-  `npm install express` -> to install express.js for building API,
-  `npm install -g nodemon` -> to watch changes in server.js file,
-  `npm install dotenv` -> to load from .env file into process.env,
+node.js (with express, dotenv),
+`npm install express` -> to install express.js for building API,
+`npm install -g nodemon` -> to watch changes in server.js file,
+`npm install dotenv` -> to load from .env file into process.env,
+
+## Database (MongoDB)
+
+- install mongodb locally: `npm install mongoose`, OR:
+- create account: https://www.mongodb.com/products/platform/atlas-database,
+- create free database cluster (name it)`
+- add username & password (security / quickstart)`
+- allow access from anywhere or from particular IP address (security / network access)`
+- connect cluster to the application:
+  - get connection string and store it in .env,
+  - `npm install mongoose` (to connect to db, interact with collections, use schemas etc.),
 
 ## Frontend
 
-- node.js (with supertest),
-  `npm init -y` -> to initiate project with package.json,
-  `npm install supertest --save-dev ` -> to install supertest for testing API,
-  `npm install --save-dev jest` -> to use jest testing library (describe, it, expect),
+<!-- node.js (with react.js), -->
+<!-- `npm init -y` -> to initiate project with package.json, -->
+
+## Testing
+
+### API
+
+- `npm install supertest --save-dev` -> to install supertest for testing API,
+- `npm install --save-dev jest` -> to use jest testing library (describe, it, expect) with supertest,
 
 <!-- ## Acceptance Criteria
 
