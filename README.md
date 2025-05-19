@@ -21,7 +21,7 @@ node.js (with express, dotenv),
 - add username & password (security / quickstart)`
 - allow access from anywhere or from particular IP address (security / network access)`
 - connect cluster to the application:
-  - get connection string and store it in .env,
+  - get connection string and store it in .env (insert password into string),
   - `npm install mongoose` (to connect to db, interact with collections, use schemas etc.),
 
 ## Frontend
@@ -39,7 +39,7 @@ node.js (with express, dotenv),
 <!-- ## Acceptance Criteria
 
 - JavaScript & TypeScript,
-- ESLint + Prettier + eslint-config-prettier -> code linter & formatter configuration,
+- ESLint + Prettier (prettier on pre-commit?) + eslint-config-prettier -> code linter & formatter configuration,
 - React.js -> form (title, author, date of publishing, genre, description), possibility to update or delete data, searchbox, pagination,
 - Node.js (express, pg, cors) -> API to create, read, update or delete books related entries,
 - postgreSQL -> database to store books related entries,
