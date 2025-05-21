@@ -33,8 +33,31 @@ node.js (with express, dotenv),
 
 ### API
 
+#### Supertest + Jest
+
 - `npm install supertest --save-dev` -> to install supertest for testing API,
 - `npm install --save-dev jest` -> to use jest testing library (describe, it, expect) with supertest,
+
+### E2E
+
+#### Playwright
+
+docs: https://playwright.dev/docs/api/class-page,
+
+- `npm init playwright` (or @latest / or e.g. @1.17.123) -> installs,
+- `npx @playwright/test --version` -> checks installed version,
+- `npm i @playwright/test` -> installs new version,
+
+- `npx playwright test` -> runs tests (headless by default),
+- `npx playwright show-report` -> displays report in html,
+  `npx playwright test --trace on` -> includes test tracer,
+- `npx playwright test --project=webkit` -> runs only one project,
+- `npx playwright test --headed` -> runs tests in headed mode,
+- `npx playwright test --ui` -> runs tests in UI mode,
+- `npx playwright test filename.spec.js` -> runs one test only,
+- `npx playwright test -g "name of the test"` -> runs one desc only,
+- `npx playwright codegen https://website.com/` -> record the test,
+- `npx playwright test --debug` -> runs tests in debug mode,
 
 <!-- ## Acceptance Criteria
 
@@ -47,7 +70,7 @@ node.js (with express, dotenv),
 - Git & GitHub -> version control system, external code repository,
 - Jenkins -> ci/cd pipeline triggered after every push to external repository (alternative -> GitHub Actions),
 
-- nice to have: Supertest, JSON SCHEMA, Docker, Kubernetes, husky, Cucumber, test documentation (user stories, test scenarios & test cases), API documentation (Swagger), test reporter & test results notification,
+- nice to have: Supertest, JSON SCHEMA, Docker, git tag version, Kubernetes, husky, Cucumber, test documentation (user stories, test scenarios & test cases), API documentation (Swagger), test reporter & test results notification,
 
 ## (Example) Project Structure
 
