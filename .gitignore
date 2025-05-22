@@ -7,9 +7,11 @@ to-do/
 # Environment variables
 backend/.env
 
-# # Testing
-# playwright-report/
-# test-results/
+# Playwright
+**/test-results/
+**/playwright-report/
+**/blob-report/
+**/playwright/.cache/
 
 
 # IDE
