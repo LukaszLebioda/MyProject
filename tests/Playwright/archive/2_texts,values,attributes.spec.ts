@@ -1,5 +1,6 @@
 // EXTRACTING TEXT FROM SINGLE SELECTOR
 // EXTRACTING TEXT FROM MULTIPLE SELECTORS
+// ASSERTING VALUES OF HTML ATTRIBUTES
 
 import { test, expect, Locator } from "@playwright/test";
 
@@ -16,6 +17,7 @@ test.describe("Login form tests", () => {
     const passwordInputField = page.locator("input#password");
     const submitButton = page.locator("input[id='signInBtn']");
     const phoneCards = page.locator(".card-body a");
+    const documentLink = page.locator("a[href*='documents-request']");
 
     // valid login action:
     await usernameInputField.fill("rahulshettyacademy");
@@ -40,5 +42,8 @@ test.describe("Login form tests", () => {
     await page.waitForLoadState("networkidle"); // flaky
     const allPhoneNames = await phoneCards.allTextContents();
     console.log(allPhoneNames);
+
+    // asserting value of html attribute
+    await expect(documentLink).toHaveAttribute("class", "blinkingText");
   });
 });
