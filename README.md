@@ -15,13 +15,13 @@ node.js (with express, dotenv),
 
 ## Database (MongoDB)
 
-- install mongodb locally: `npm install mongoose`, OR:
+- use mongoDB cloud (optionally install mongoDB locally);
 - create account: https://www.mongodb.com/products/platform/atlas-database,
-- create free database cluster (name it)`
+- create free database cluster (give it a name)`
 - add username & password (security / quickstart)`
-- allow access from anywhere or from particular IP address (security / network access)`
+- allow access from anywhere or from particular IP address (security / network access: '0.0.0.0/0')`
 - connect cluster to the application:
-  - get connection string and store it in .env (insert password into string),
+  - get connection string and store it in .env (insert password into the connection string),
   - `npm install mongoose` (to connect to db, interact with collections, use schemas etc.),
 
 ## Frontend

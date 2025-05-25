@@ -4,21 +4,24 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const routes = require("./routes/books.js");
 const port = process.env.PORT;
+const mongoURI = process.env.MONGO_URI;
 
-//express app
+// express app
 const app = express();
+
+// // listen for requests
+// // we want to start the server only after connecting with db
+// // so we moved this code into mongoDB connection declaration
+// app.listen(port, () => {
+//   console.log(`Listening on port ${port}...`);
+//   console.log(`Server started at http://localhost:${port}`);
+// });
 
 // middleware (runs globally after every request)
 app.use(express.json()); // allows to use json body in requests
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next(); // moves to next middleware
-});
-
-// listen for requests
-app.listen(port, () => {
-  console.log(`Listening on port ${port}...`);
-  console.log(`Server started at http://localhost:${port}`);
 });
 
 // API routes ("localhost:4000/api/books/")
@@ -29,3 +32,21 @@ app.use("/api/books", routes); // "/api/books" as prefix to routes
 //   //   res.send("Server is ready...");
 //   //   res.sendFile("./index.html");
 // });
+
+// connect to db (async, returns promise)
+mongoose
+  .connect(mongoURI)
+  .then(() => {
+    console.log("Connected to database");
+    // listen for requests
+    // we want to start the server only after connecting with db
+    // so we moved this code into mongoDB connection declaration
+    app.listen(port, () => {
+      console.log(`Listening on port ${port}`);
+      console.log(`Server started at http://localhost:${port}`);
+    });
+  })
+  .catch((error) => {
+    console.log("Error connecting to MongoDB");
+    console.log(error);
+  });

@@ -1,4 +1,5 @@
 const express = require("express");
+const Book = require("./../models/bookModel.js");
 const router = express.Router();
 
 // GET all books
@@ -11,9 +12,19 @@ router.get("/:id", (req, res) => {
   res.json({ mssg: "Get a single book" });
 });
 
-// POST a new book
-router.post("/", (req, res) => {
-  res.json({ mssg: "Post a new book" });
+// POST a new book (async)
+router.post("/", async (req, res) => {
+  // indicate what req.body should contain
+  const { title, author, published, genre, description } = req.body;
+  try {
+    // create new book with Book model
+    const book = await Book.create({ title, author, published, genre, description });
+    // indicate what the response status & body should be on success§
+    res.status(201).json(book);
+  } catch (error) {
+    // indicate what the response status & body should be on failure
+    res.status(400).json({ error: error.message });
+  }
 });
 
 // DELETE a book
