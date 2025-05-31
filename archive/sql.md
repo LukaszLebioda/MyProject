@@ -1,10 +1,9 @@
----
--- PostgreSQL17 => start server (elephant icon)
--- terminal => psql (to enter REPL), \q (to quit)
--- \l (to list all databases), \d (to list all tables)
--- CREATE DATABASE databasename
--- \c databasename (to connect to database) (or use GUI)
----
+# Basics
+
+- PostgreSQL17 => start server (elephant icon) => select DB
+- terminal => psql (to enter REPL), \q (to quit)
+  - \l (to list all databases), \d (to list all tables)
+  - \c databasename (to connect to database) (or use GUI)
 
 # Prerequisites
 
@@ -17,11 +16,6 @@
 - add to path to get access to CLI psql command:
 - terminal => vi .zshrc => export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/17/bin
 - terminal => source .zshrc (or just restart terminal),
-
-# CLI: Connection to DB
-
-- elephant icon -> Open PostgreSQL -> Start server,
-- click on selected db to open terminal or write psql in terminal,
 
 <!-- # GUI
 
