@@ -23,6 +23,27 @@
 - `tsc dir/practice.ts -w` (to watch changes in a single ts file),
 - `tsc --noEmitOnError filename.ts` (not to compile if error is present),
 
+# VS extensions & fonts & themes
+
+- Live Server,
+- vscode-icons (or Material Icon Theme) (nice looking icons),
+- JavaScript (ES6) code snippets (e.g. clg => console.log()),
+- Thunder Client (API),
+- Code Runner (to run code => a triangle sign in menu),
+- Prettier,
+- ESLint,
+- IntelliCode,
+- GitHub co-pilot,
+
+- emmet for React (tag autocomplete), VS code settings.json:
+  "emmet.includeLanguages": {
+  "javascript": "javascriptreact",
+  "typescript": "typescriptreact"
+  }
+
+- preferred font: Cascadia Mono,
+- preferred theme: One Monokai (Dark),
+
 # VS Code key shortcuts
 
 - ctrl + opt + N => to run the code

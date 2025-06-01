@@ -26,8 +26,8 @@ node.js (with express, dotenv),
 
 ## Frontend
 
-<!-- node.js (with react.js), -->
-<!-- `npm init -y` -> to initiate project with package.json, -->
+- `npx create-react-app <project-directory>` (to create React app),
+- `npm install- eact-router-dom` (allows to add pages to React app),
 
 ## Testing
 
