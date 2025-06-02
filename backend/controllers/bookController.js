@@ -10,6 +10,8 @@ const getBooks = async (req, res) => {
   //// get all books from db, where author is Dan Simmons
   // const books = await Book.find({}).sort({ author: "Simmons" });
   const books = await Book.find({}).sort({ createdAt: -1 }); // find all books
+  // send books as array of objects in response
+  // which is fetched in frontend/pages/Home.js
   res.status(200).json(books); // or json({ mssg: "GET all books" });
 };
 
