@@ -31,6 +31,12 @@ node.js (with express, dotenv),
 
 ## Testing
 
+### Code standards
+
+#### Prettier
+
+- `npm i --save-dev --save-exact prettier` -> to install Prettier (and hardcode its version),
+
 ### API
 
 #### Supertest + Jest

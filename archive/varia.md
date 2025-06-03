@@ -5,6 +5,42 @@
 - ES Module (modern): package.json -> `"type": "module"`,
   `import express from "express";`
 
+# Prettier
+
+- recommended package to integrate Prettier with ESlint:
+  https://github.com/prettier/eslint-config-prettier
+
+- `npm i --save-dev prettier` (to install Prettier),
+- `npm i --save-dev --save-exact prettier` (to hardcode Prettier version, to avoid different formatting with different versions),
+- `npx prettier --write fileName.js` (to format a file),
+- `npx prettier --write .` (to format all files),
+- `npx prettier --check fileName.js` (to check file formatting),
+- `npx prettier . --check` (to check all files formatting),
+
+- Prettier as VS Code plugin (to set it as default formatter and to format on-save):
+  VS Code extensions: install Prettier - Code formatter,
+  VS Code settings => set default formatter to Prettier (format on-save / format on-paste (optional)),
+
+- in project directory create .prettierignore (to list files/folders to be ignored),
+- in project directory create .prettierrc (or .prettierrc.json) (for formatting rules),
+- within .prettierrc.json set configuration:
+  {
+  "semi": true,
+  "singleQuote": false,
+  "useTabs": true,
+  "tabWidth": 2,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "trailingComma": "es5",
+  "printWidth": 80,
+  "bracketSameLine": true
+  }
+
+or (this is recommended if we want to have prettier config globally, for all the projects):
+
+- go to VS Code stettings -> json,
+- paste prettier configuration directly to json file,
+
 # TypeScript
 
 - `npm i typescript -g` (to install tsc globally),
