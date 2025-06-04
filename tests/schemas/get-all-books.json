@@ -1,0 +1,36 @@
+{
+	"type": "array",
+	"items": {
+		"type": "object",
+		"properties": {
+			"_id": {
+				"type": "string"
+			},
+			"title": {
+				"type": "string"
+			},
+			"author": {
+				"type": "string"
+			},
+			"published": {
+				"type": "number"
+			},
+			"genre": {
+				"type": "string"
+			},
+			"description": {
+				"type": "string"
+			},
+			"createdAt": {
+				"type": "string"
+			},
+			"updatedAt": {
+				"type": "string"
+			},
+			"__v": {
+				"type": "number"
+			}
+		},
+		"required": ["_id", "title", "author", "published", "genre", "description", "createdAt", "updatedAt", "__v"]
+	}
+}
