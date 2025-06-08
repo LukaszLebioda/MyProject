@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useBooksContext } from "../hooks/useBooksContext";
 
 const BookForm = () => {
+  const { dispatch } = useBooksContext();
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [published, setPublished] = useState("");
@@ -13,7 +15,6 @@ const BookForm = () => {
     e.preventDefault();
     // dummy book object to be sent as request body
     const book = { title, author, published, genre, description };
-    // send POST request with json string to the server
     const response = await fetch("/api/books", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -32,6 +33,7 @@ const BookForm = () => {
       setDescription("");
       setError(null);
       console.log("new book added", json);
+      dispatch({ type: "CREATE_BOOK", payload: json });
     }
   };
 

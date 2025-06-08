@@ -1,16 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useBooksContext } from "../hooks/useBooksContext";
 
 // components
 import BookDetails from "../components/BookDetails";
 import BookForm from "../components/BookForm";
 
 const Home = () => {
-  // ["state", "function that changes state"] = useState(initialState)
-  // books -> from bookController.js (getBooks())
-  const [books, setBooks] = useState(null);
+  const { books, dispatch } = useBooksContext();
 
-  // useEffect() hook fires a function that fetches data from server
-  // it does so only once ([] at the end) after component is rendered
   useEffect(() => {
     const fetchBooks = async () => {
       // normally we need fetch("http://localhost:4000/api/books")
@@ -20,14 +17,11 @@ const Home = () => {
       const response = await fetch("/api/books");
       const json = await response.json();
       if (response.ok) {
-        // fetches books as array of objects
-        // from backend/controllers/bookController.js
-        // and sets it to the state
-        setBooks(json);
+        dispatch({ type: "SET_BOOKS", payload: json });
       }
     };
     fetchBooks();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="home">
