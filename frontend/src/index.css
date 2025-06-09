@@ -71,7 +71,7 @@ footer a {
   font-size: 0.9em;
   color: #555;
 }
-.book-details span {
+.book-details span#trash {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -80,6 +80,40 @@ footer a {
   padding: 6px;
   border-radius: 50%;
   color: #333;
+}
+.book-details span#mark {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: white;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+  font-size: 0.9em;
+}
+.book-details .stars {
+  cursor: pointer;
+  background: white;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+  font-size: 1.3em;
+}
+.book-details span#star1 {
+  position: absolute;
+  bottom: 45px;
+  right: 20px;
+}
+.book-details span#star2 {
+  position: absolute;
+  bottom: 45px;
+  right: 45px;
+}
+.book-details span#star3 {
+  position: absolute;
+  bottom: 45px;
+  right: 70px;
 }
 
 /* new workout form */
@@ -104,9 +138,6 @@ select {
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
-  /* background: #fff;
-  font-family: "Poppins";
-  font-size: 1em; */
 }
 form button {
   background: var(--primary);
@@ -124,4 +155,8 @@ div.error {
   color: var(--error);
   border-radius: 4px;
   margin: 20px 0;
+}
+input.error,
+select.error {
+  border: 1px solid var(--error);
 }

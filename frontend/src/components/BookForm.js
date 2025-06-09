@@ -9,6 +9,7 @@ const BookForm = () => {
   const [genre, setGenre] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
     // prevent default form submission action -> page refresh
@@ -21,8 +22,10 @@ const BookForm = () => {
       body: JSON.stringify(book),
     });
     const json = await response.json();
+
     if (!response.ok) {
       setError(json.error);
+      setEmptyFields(json.emptyFields);
     }
     if (response.ok) {
       // reset form fields to initial state
@@ -32,6 +35,7 @@ const BookForm = () => {
       setGenre("");
       setDescription("");
       setError(null);
+      setEmptyFields([]);
       console.log("new book added", json);
       dispatch({ type: "CREATE_BOOK", payload: json });
     }
@@ -45,21 +49,28 @@ const BookForm = () => {
         type="text"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
+        className={emptyFields.includes("title") ? "error" : ""}
       />
       <label>Author:</label>
       <input
         type="text"
         onChange={(e) => setAuthor(e.target.value)}
         value={author}
+        className={emptyFields.includes("author") ? "error" : ""}
       />
       <label>Published:</label>
       <input
         type="number"
         onChange={(e) => setPublished(e.target.value)}
         value={published}
+        className={emptyFields.includes("published") ? "error" : ""}
       />
       <label>Genre:</label>
-      <select onChange={(e) => setGenre(e.target.value)} value={genre}>
+      <select
+        onChange={(e) => setGenre(e.target.value)}
+        value={genre}
+        className={emptyFields.includes("genre") ? "error" : ""}
+      >
         <option value="">-</option>
         <option value="fantasy">Fantasy</option>
         <option value="sci-fi">Sci-Fi</option>
@@ -76,6 +87,7 @@ const BookForm = () => {
         type="text"
         onChange={(e) => setDescription(e.target.value)}
         value={description}
+        className={emptyFields.includes("description") ? "error" : ""}
       />
 
       <button>Add your book</button>

@@ -1,5 +1,6 @@
 import { useBooksContext } from "../hooks/useBooksContext";
 import { FaTrash } from "react-icons/fa";
+import { CiStar } from "react-icons/ci";
 
 const BookDetails = ({ book }) => {
   const { dispatch } = useBooksContext();
@@ -29,9 +30,19 @@ const BookDetails = ({ book }) => {
       <p>
         <strong>Description:</strong> {book.description}
       </p>
-      <p>{book.createdAt}</p>
-      <span onClick={handleClick} title="Delete">
+      {/* <p>{book.createdAt}</p> */}
+      <span id="trash" onClick={handleClick} title="Delete">
         <FaTrash />
+      </span>
+      <span id="mark">Mark read</span>
+      <span id="star1" className="stars">
+        <CiStar />
+      </span>
+      <span id="star2" className="stars">
+        <CiStar />
+      </span>
+      <span id="star3" className="stars">
+        <CiStar />
       </span>
     </div>
   );
