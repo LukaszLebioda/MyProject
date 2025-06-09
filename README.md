@@ -40,11 +40,12 @@ node.js (with express, dotenv),
 
 ### API
 
-#### Supertest + Jest
+#### Supertest + Jest + TypeScript
 
 - `npm install supertest --save-dev` -> to install supertest for testing API,
 - `npm install --save-dev jest` -> to use jest testing library (describe, it, expect) with supertest,
 - `npm install --save-dev jest-json-schema` -> to use json schema matcher for jest,
+- `npm i --save-dev @types/jest` -> for typescript support,
 
 ### E2E
 
