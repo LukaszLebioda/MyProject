@@ -1,17 +1,11 @@
-// functions that control API requests to make routers cleaner
-
 const Book = require("./../models/bookModel.js");
 const mongoose = require("mongoose");
 
 // get all books
 const getBooks = async (req, res) => {
-  //// get all books from db, sorted by createdAt in descending order
-  // const books = await Book.find({}).sort({ createdAt: -1 });
-  //// get all books from db, where author is Dan Simmons
+  // get all books from db, where author is Dan Simmons
   // const books = await Book.find({}).sort({ author: "Simmons" });
-  const books = await Book.find({}).sort({ createdAt: -1 }); // find all books
-  // send books as array of objects in response
-  // which is fetched in frontend/pages/Home.js
+  const books = await Book.find({}).sort({ createdAt: -1 });
   res.status(200).json(books); // or json({ mssg: "GET all books" });
 };
 
@@ -36,7 +30,13 @@ const createBook = async (req, res) => {
   const { title, author, published, genre, description } = req.body;
   try {
     // create new book with Book model (add new doc to db)
-    const book = await Book.create({ title, author, published, genre, description });
+    const book = await Book.create({
+      title,
+      author,
+      published,
+      genre,
+      description,
+    });
     // indicate what the response status & body should be on success§
     res.status(201).json(book);
   } catch (error) {
@@ -51,7 +51,11 @@ const updateBook = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "Invalid book ID" });
   }
-  const book = await Book.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true });
+  const book = await Book.findOneAndUpdate(
+    { _id: id },
+    { ...req.body },
+    { new: true }
+  );
   if (!book) {
     return res.status(404).json({ error: "Book not found" });
   }
