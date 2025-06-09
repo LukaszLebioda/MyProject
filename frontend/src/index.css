@@ -59,7 +59,7 @@ footer a {
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.08);
 }
 .book-details h4 {
   margin: 0 0 10px 0;
@@ -76,7 +76,7 @@ footer a {
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f1f1f1;
+  background: white;
   padding: 6px;
   border-radius: 50%;
   color: #333;
