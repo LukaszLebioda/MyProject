@@ -160,3 +160,25 @@ input.error,
 select.error {
   border: 1px solid var(--error);
 }
+
+/* pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 20px 0;
+  justify-content: center;
+}
+.pagination button {
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  font-family: "Poppins";
+}
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

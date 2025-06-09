@@ -1,12 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useBooksContext } from "../hooks/useBooksContext";
 
 // components
 import BookDetails from "../components/BookDetails";
 import BookForm from "../components/BookForm";
+import Pagination from "../components/Pagination";
+
+const BOOKS_PER_PAGE = 3;
 
 const Home = () => {
   const { books, dispatch } = useBooksContext();
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -23,12 +27,32 @@ const Home = () => {
     fetchBooks();
   }, [dispatch]);
 
+  // Pagination logic
+  const totalPages = books ? Math.ceil(books.length / BOOKS_PER_PAGE) : 1;
+  const startIdx = (currentPage - 1) * BOOKS_PER_PAGE;
+  const paginatedBooks = books
+    ? books.slice(startIdx, startIdx + BOOKS_PER_PAGE)
+    : [];
+
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
   return (
     <div className="home">
-      {/* if there are books, map through them and display them */}
-      <div className="books">
-        {books &&
-          books.map((book) => <BookDetails book={book} key={book._id} />)}
+      <div>
+        {/* if there are books, map through them and display them */}
+        {paginatedBooks &&
+          paginatedBooks.map((book) => (
+            <BookDetails key={book._id} book={book} />
+          ))}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
       </div>
       <BookForm />
     </div>
