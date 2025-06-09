@@ -4,9 +4,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="container">
-        {/* <Link to="/"> */}
-        <h1>Footer</h1>
-        {/* </Link> */}
+        <p>Łukasz Lebioda 2025</p>
       </div>
     </footer>
   );
