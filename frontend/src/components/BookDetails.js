@@ -31,17 +31,24 @@ const BookDetails = ({ book }) => {
         <strong>Description:</strong> {book.description}
       </p>
       {/* <p>{book.createdAt}</p> */}
-      <span id="trash" onClick={handleClick} title="Delete">
+      <span
+        id="trash"
+        onClick={handleClick}
+        title="Delete"
+        style={{ background: "transparent" }}
+      >
         <FaTrash />
       </span>
-      <span id="mark">Mark read</span>
-      <span id="star1" className="stars">
+      <span id="mark" style={{ background: "transparent" }}>
+        Mark read
+      </span>
+      <span id="star1" className="stars" style={{ background: "transparent" }}>
         <CiStar />
       </span>
-      <span id="star2" className="stars">
+      <span id="star2" className="stars" style={{ background: "transparent" }}>
         <CiStar />
       </span>
-      <span id="star3" className="stars">
+      <span id="star3" className="stars" style={{ background: "transparent" }}>
         <CiStar />
       </span>
     </div>

@@ -46,6 +46,10 @@ header a {
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s;
+}
+.book-details:hover {
+  background: #f3f3f3; /* just a little bit darker than #fff */
 }
 .book-details h4 {
   margin: 0 0 10px 0;

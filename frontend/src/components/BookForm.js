@@ -60,7 +60,7 @@ const BookForm = () => {
       />
       <label>Published:</label>
       <input
-        type="number"
+        type="text"
         onChange={(e) => setPublished(e.target.value)}
         value={published}
         className={emptyFields.includes("published") ? "error" : ""}
