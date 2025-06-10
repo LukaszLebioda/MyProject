@@ -90,7 +90,7 @@ const BookForm = () => {
         className={emptyFields.includes("description") ? "error" : ""}
       />
 
-      <button>Add</button>
+      <button>Add book</button>
       {error && <div className="error">{error}</div>}
     </form>
   );

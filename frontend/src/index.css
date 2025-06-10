@@ -163,7 +163,6 @@ select.error {
   background: #fff;
   color: #333;
   cursor: pointer;
-  font-family: "Poppins";
 }
 .pagination button:disabled {
   opacity: 0.5;
@@ -203,4 +202,12 @@ select.error {
 #alphabet-switch-btn {
   background: var(--secondary);
   color: #fff;
+}
+.no-books-message {
+  text-align: center;
+  margin-top: 2rem;
+  color: #888;
+  font-size: 1.4rem;
+  padding: 4rem 0;
+  background: #f1f1f1;
 }

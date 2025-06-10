@@ -12,14 +12,17 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedLetter, setSelectedLetter] = useState("");
   const [filterBy, setFilterBy] = useState("title"); // "title" or "author"
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBooks = async () => {
+      setLoading(true);
       const response = await fetch("/api/books");
       const json = await response.json();
       if (response.ok) {
         dispatch({ type: "SET_BOOKS", payload: json });
       }
+      setLoading(false);
     };
     fetchBooks();
   }, [dispatch]);
@@ -38,7 +41,7 @@ const Home = () => {
     ? Math.ceil(filteredBooks.length / BOOKS_PER_PAGE)
     : 1;
   const startIdx = (currentPage - 1) * BOOKS_PER_PAGE;
-  const paginatedBooks = filteredBooks.slice(
+  const displayedBooks = filteredBooks.slice(
     startIdx,
     startIdx + BOOKS_PER_PAGE
   );
@@ -63,14 +66,22 @@ const Home = () => {
           filterBy={filterBy}
           onFilterByChange={handleFilterByChange}
         />
-        {paginatedBooks.map((book) => (
-          <BookDetails key={book._id} book={book} />
-        ))}
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-        />
+        {loading ? (
+          <div className="no-books-message">Loading...</div>
+        ) : displayedBooks.length === 0 ? (
+          <div className="no-books-message">No books found...</div>
+        ) : (
+          displayedBooks.map((book) => (
+            <BookDetails key={book._id} book={book} />
+          ))
+        )}
+        {filteredBooks.length > 3 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        )}
       </div>
       <BookForm />
     </div>
