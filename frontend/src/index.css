@@ -27,21 +27,6 @@ header a {
   color: #333;
   text-decoration: none;
 }
-footer {
-  background: #fff;
-}
-footer .container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-footer a {
-  color: #333;
-  text-decoration: none;
-}
 .pages {
   max-width: 1400px;
   padding: 20px;
