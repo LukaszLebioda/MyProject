@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useBooksContext } from "../hooks/useBooksContext";
 import BookDetails from "../components/BookDetails";
 import BookForm from "../components/BookForm";
@@ -11,6 +11,7 @@ const Home = () => {
   const { books, dispatch } = useBooksContext();
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedLetter, setSelectedLetter] = useState("");
+  const [filterBy, setFilterBy] = useState("title"); // "title" or "author"
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -23,13 +24,13 @@ const Home = () => {
     fetchBooks();
   }, [dispatch]);
 
-  // Filter books by selected letter
+  // Filter books by selected letter and filterBy property
   const filteredBooks = books
-    ? books.filter((book) =>
-        selectedLetter
-          ? book.title && book.title[0].toUpperCase() === selectedLetter
-          : true
-      )
+    ? books.filter((book) => {
+        if (!selectedLetter) return true;
+        const field = filterBy === "author" ? book.author : book.title;
+        return field && field[0].toUpperCase() === selectedLetter;
+      })
     : [];
 
   // Pagination logic
@@ -42,15 +43,15 @@ const Home = () => {
     startIdx + BOOKS_PER_PAGE
   );
 
-  const handlePageChange = (page) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
-  };
-
   const handleLetterClick = (letter) => {
     setSelectedLetter(letter);
-    setCurrentPage(1); // Reset to first page on filter change
+    setCurrentPage(1);
+  };
+
+  const handleFilterByChange = (value) => {
+    setFilterBy(value);
+    setCurrentPage(1);
+    setSelectedLetter(""); // Optionally reset letter filter on switch
   };
 
   return (
@@ -59,6 +60,8 @@ const Home = () => {
         <AlphabetFilter
           selectedLetter={selectedLetter}
           onLetterClick={handleLetterClick}
+          filterBy={filterBy}
+          onFilterByChange={handleFilterByChange}
         />
         {paginatedBooks.map((book) => (
           <BookDetails key={book._id} book={book} />
@@ -66,7 +69,7 @@ const Home = () => {
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
-          onPageChange={handlePageChange}
+          onPageChange={setCurrentPage}
         />
       </div>
       <BookForm />

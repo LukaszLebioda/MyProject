@@ -79,7 +79,7 @@ docs: https://playwright.dev/docs/api/class-page,
 - Git & GitHub -> version control system, external code repository,
 - Jenkins -> ci/cd pipeline triggered after every push to external repository (alternative -> GitHub Actions),
 
-- nice to have: Supertest, JSON SCHEMA, Docker, git tag version, Kubernetes, husky, Cucumber, test documentation (user stories, test scenarios & test cases), API documentation (Swagger), test reporter & test results notification,
+- nice to have: Supertest, JSON SCHEMA, Docker, git tag version, Kubernetes, husky, Cucumber, test documentation (user stories, test scenarios & test cases), API documentation (Swagger), test reporter & test results notification, AWS (for photos of covers)
 
 ## (Example) Project Structure
 

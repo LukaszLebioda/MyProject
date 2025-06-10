@@ -1,26 +1,30 @@
+import { LiaExchangeAltSolid } from "react-icons/lia";
+
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-const AlphabetFilter = ({ selectedLetter, onLetterClick }) => (
-  <div
-    className="alphabet-filter"
-    style={{
-      marginBottom: "1rem",
-      textAlign: "center",
-    }}
-  >
+const AlphabetFilter = ({
+  selectedLetter,
+  onLetterClick,
+  filterBy = "title",
+  onFilterByChange,
+}) => (
+  <div className="alphabet-filter">
     <button
-      className={!selectedLetter ? "active" : ""}
-      onClick={() => onLetterClick("")}
-      style={{ marginRight: 6 }}
+      id="alphabet-switch-btn"
+      onClick={() =>
+        onFilterByChange(filterBy === "title" ? "author" : "title")
+      }
     >
-      All titles
+      <LiaExchangeAltSolid />
+    </button>
+    <button id="alphabet-filter-type-btn">
+      {filterBy === "title" ? "Title" : "Author"}
     </button>
     {ALPHABET.map((letter) => (
       <button
         key={letter}
         className={selectedLetter === letter ? "active" : ""}
         onClick={() => onLetterClick(letter)}
-        style={{ marginRight: 6 }}
       >
         {letter}
       </button>
