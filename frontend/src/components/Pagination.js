@@ -1,20 +1,21 @@
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  if (totalPages <= 1) return null;
+  // Always render, but disable buttons if only one page
+  const isIdle = totalPages <= 1;
 
   return (
     <div className="pagination">
       <button
         onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
+        disabled={currentPage === 1 || isIdle}
       >
         Prev
       </button>
       <span>
-        Page {currentPage} of {totalPages}
+        Page {totalPages === 0 ? 0 : currentPage} of {totalPages}
       </span>
       <button
         onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        disabled={currentPage === totalPages || isIdle}
       >
         Next
       </button>

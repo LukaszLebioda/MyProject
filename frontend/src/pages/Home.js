@@ -44,7 +44,7 @@ const Home = () => {
   );
 
   const handleLetterClick = (letter) => {
-    setSelectedLetter(letter);
+    setSelectedLetter((prev) => (prev === letter ? "" : letter));
     setCurrentPage(1);
   };
 
