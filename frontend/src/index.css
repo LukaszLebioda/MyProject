@@ -105,6 +105,14 @@ header a {
   bottom: 45px;
   right: 70px;
 }
+.no-books-message {
+  text-align: center;
+  margin-top: 2rem;
+  color: #888;
+  font-size: 1.4rem;
+  padding: 4rem 0;
+  background: #f1f1f1;
+}
 
 /* new workout form */
 label,
@@ -201,17 +209,5 @@ select.error {
   min-width: 70px;
   background: var(--primary);
   color: #fff;
-  cursor: default;
-}
-#alphabet-switch-btn {
-  background: var(--secondary);
-  color: #fff;
-}
-.no-books-message {
-  text-align: center;
-  margin-top: 2rem;
-  color: #888;
-  font-size: 1.4rem;
-  padding: 4rem 0;
-  background: #f1f1f1;
+  cursor: pointer;
 }
