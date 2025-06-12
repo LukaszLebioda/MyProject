@@ -3,7 +3,9 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"test": "jest"
+		"test": "jest",
+		"k6": "k6 run k6/testFile.js",
+		"k6debug": "k6 run --http-debug='full' k6/testfile.js"
 	},
 	"keywords": [],
 	"author": "",
