@@ -70,40 +70,44 @@ header a {
   padding: 6px;
   border-radius: 50%;
   color: #333;
+  font-size: 0.9em;
 }
-.book-details span#mark {
+.book-details span#edit {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  top: 18px;
+  right: 45px;
   cursor: pointer;
   background: white;
   padding: 6px;
   border-radius: 50%;
   color: #333;
-  font-size: 0.9em;
+  font-size: 1.1em;
 }
 .book-details .stars {
-  cursor: pointer;
+  cursor: default;
   background: white;
   padding: 6px;
   border-radius: 50%;
   color: #333;
   font-size: 1.3em;
+  position: absolute;
+  bottom: 11px;
+  font-size: 1em;
 }
 .book-details span#star1 {
-  position: absolute;
-  bottom: 45px;
-  right: 20px;
+  right: 100px;
 }
 .book-details span#star2 {
-  position: absolute;
-  bottom: 45px;
-  right: 45px;
+  right: 80px;
 }
 .book-details span#star3 {
-  position: absolute;
-  bottom: 45px;
-  right: 70px;
+  right: 60px;
+}
+.book-details span#star4 {
+  right: 40px;
+}
+.book-details span#star5 {
+  right: 20px;
 }
 .no-books-message {
   text-align: center;

@@ -1,6 +1,7 @@
 import { useBooksContext } from "../hooks/useBooksContext";
 import { FaTrash } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
+import { MdEdit } from "react-icons/md";
 
 const BookDetails = ({ book }) => {
   const { dispatch } = useBooksContext();
@@ -31,16 +32,11 @@ const BookDetails = ({ book }) => {
         <strong>Description:</strong> {book.description}
       </p>
       {/* <p>{book.createdAt}</p> */}
-      <span
-        id="trash"
-        onClick={handleClick}
-        title="Delete"
-        style={{ background: "transparent" }}
-      >
-        <FaTrash />
+      <span id="edit" title="Edit" style={{ background: "transparent" }}>
+        <MdEdit />
       </span>
-      <span id="mark" style={{ background: "transparent" }}>
-        Mark read
+      <span id="trash" onClick={handleClick} title="Delete" style={{ background: "transparent" }}>
+        <FaTrash />
       </span>
       <span id="star1" className="stars" style={{ background: "transparent" }}>
         <CiStar />
@@ -49,6 +45,12 @@ const BookDetails = ({ book }) => {
         <CiStar />
       </span>
       <span id="star3" className="stars" style={{ background: "transparent" }}>
+        <CiStar />
+      </span>
+      <span id="star4" className="stars" style={{ background: "transparent" }}>
+        <CiStar />
+      </span>
+      <span id="star5" className="stars" style={{ background: "transparent" }}>
         <CiStar />
       </span>
     </div>

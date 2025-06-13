@@ -4,8 +4,9 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "jest",
-		"k6": "k6 run k6/testFile.js",
-		"k6debug": "k6 run --http-debug='full' k6/testfile.js"
+		"k6:ci": "k6 run k6/**",
+		"k6:test": "k6 run ../a-practice/k6/test-file.js",
+		"k6:debug": "k6 run --http-debug='full' ../a-practice/k6/test-file.js"
 	},
 	"keywords": [],
 	"author": "",

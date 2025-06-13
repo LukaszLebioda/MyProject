@@ -47,6 +47,14 @@ node.js (with express, dotenv),
 - `npm install --save-dev jest-json-schema` -> to use json schema matcher for jest,
 - `npm i --save-dev @types/jest` -> for typescript support,
 
+### Load
+
+#### k6
+
+- `brew install k6` -> to install k6,
+- `k6 run test.js` -> to run test,
+- `k6 run --http-debug="full" test.js` -> to run test in debug mode,
+
 ### E2E
 
 #### Playwright

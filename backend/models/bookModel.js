@@ -13,7 +13,7 @@ const bookSchema = new Schema(
       required: true,
     },
     published: {
-      type: Number, // Date?
+      type: String,
       required: true,
     },
     genre: {

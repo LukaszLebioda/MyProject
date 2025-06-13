@@ -1,0 +1,127 @@
+{
+  "info": {
+    "name": "Form App API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "API tests for the Form App"
+  },
+  "item": [
+    {
+      "name": "Create Data",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "pm.test(\"Response has the correct message\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.message).to.eql(\"Data saved successfully\");",
+              "});",
+              "",
+              "pm.test(\"Response contains the saved data\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.data.data).to.eql(\"Test data from Postman\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"data\": \"Test data from Postman\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/data",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "data"]
+        }
+      }
+    },
+    {
+      "name": "Get All Data",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response is an array\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(Array.isArray(jsonData)).to.be.true;",
+              "});",
+              "",
+              "pm.test(\"Response contains at least one item\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.length).to.be.greaterThan(0);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/data",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "data"]
+        }
+      }
+    },
+    {
+      "name": "Create Data - Invalid",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test(\"Response has the correct error message\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.error).to.eql(\"Data is required\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"invalidField\": \"This should fail\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/data",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "data"]
+        }
+      }
+    }
+  ]
+}
