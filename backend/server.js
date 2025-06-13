@@ -2,7 +2,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const routes = require("./routes/books.js");
+const bookRoutes = require("./routes/books.js");
+const userRoutes = require("./routes/user.js");
 const port = process.env.PORT;
 const mongoURI = process.env.MONGO_URI;
 
@@ -25,13 +26,14 @@ app.use((req, res, next) => {
 });
 
 // API routes ("localhost:4000/api/books/")
-app.use("/api/books", routes); // "/api/books" as prefix to routes
+app.use("/api/books", bookRoutes); // "/api/books" as prefix to routes
 // instead of:
 // app.get("/", (req, res) => {
 //   res.json({ mssg: "Welcome to the app" });
 //   //   res.send("Server is ready...");
 //   //   res.sendFile("./index.html");
 // });
+app.use("/api/user", userRoutes);
 
 // connect to db (async, returns promise)
 mongoose
