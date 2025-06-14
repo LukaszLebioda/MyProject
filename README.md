@@ -13,6 +13,7 @@ node.js (with express, dotenv),
 `npm install -g nodemon` -> to watch changes in server.js file,
 `npm install dotenv` -> to load from .env file into process.env,
 `npm install bcrypt` -> to hash user passwords,
+`npm install validator` -> to validate email & password,
 
 ## Database (MongoDB)
 
