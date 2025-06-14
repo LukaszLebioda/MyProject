@@ -27,7 +27,7 @@ const Home = () => {
     fetchBooks();
   }, [dispatch]);
 
-  // Filter books by selected letter and filterBy property
+  // Filtering logic
   const filteredBooks = books
     ? books.filter((book) => {
         if (!selectedLetter) return true;
@@ -35,16 +35,6 @@ const Home = () => {
         return field && field[0].toUpperCase() === selectedLetter;
       })
     : [];
-
-  // Pagination logic
-  const totalPages = filteredBooks.length
-    ? Math.ceil(filteredBooks.length / BOOKS_PER_PAGE)
-    : 1;
-  const startIdx = (currentPage - 1) * BOOKS_PER_PAGE;
-  const displayedBooks = filteredBooks.slice(
-    startIdx,
-    startIdx + BOOKS_PER_PAGE
-  );
 
   const handleLetterClick = (letter) => {
     setSelectedLetter((prev) => (prev === letter ? "" : letter));
@@ -56,6 +46,16 @@ const Home = () => {
     setCurrentPage(1);
     setSelectedLetter(""); // Optionally reset letter filter on switch
   };
+
+  // Pagination logic
+  const totalPages = filteredBooks.length
+    ? Math.ceil(filteredBooks.length / BOOKS_PER_PAGE)
+    : 1;
+  const startIdx = (currentPage - 1) * BOOKS_PER_PAGE;
+  const displayedBooks = filteredBooks.slice(
+    startIdx,
+    startIdx + BOOKS_PER_PAGE
+  );
 
   return (
     <div className="home">
