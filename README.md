@@ -14,6 +14,7 @@ node.js (with express, dotenv),
 `npm install dotenv` -> to load from .env file into process.env,
 `npm install bcrypt` -> to hash user passwords,
 `npm install validator` -> to validate email & password,
+`npm install jsonwebtoken` -> to create jtr,
 
 ## Database (MongoDB)
 
