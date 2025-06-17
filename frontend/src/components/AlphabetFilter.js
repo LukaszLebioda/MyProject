@@ -6,7 +6,12 @@ const AlphabetFilter = ({ selectedLetter, onLetterClick, filterBy = "title", onF
       {filterBy === "title" ? "Title" : "Author"}
     </button>
     {ALPHABET.map((letter) => (
-      <button key={letter} className={selectedLetter === letter ? "active" : ""} onClick={() => onLetterClick(letter)}>
+      <button
+        key={letter}
+        id={`button-letter-${letter}`}
+        className={selectedLetter === letter ? "active" : ""}
+        onClick={() => onLetterClick(letter)}
+      >
         {letter}
       </button>
     ))}
