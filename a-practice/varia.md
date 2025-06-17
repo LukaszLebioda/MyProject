@@ -5,6 +5,13 @@
 - ES Module (modern): package.json -> `"type": "module"`,
   `import express from "express";`
 
+# Node_modules
+
+npm i / npm install (as dependency)
+npm install -D / npm install --save-dev (as devDependency)
+npm install -g (globally)
+npm install --save-exact (installs the exact version, not ~ or ^),
+
 # Prettier
 
 - recommended package to integrate Prettier with ESlint:
@@ -41,6 +48,19 @@ or (this is recommended if we want to have prettier config globally, for all the
 - go to VS Code stettings -> json,
 - paste prettier configuration directly to json file,
 
+# Versioning
+
+example of version: 1.28.2:
+
+- 1: major (risk of uncompatible changes),
+- 28: minor (new, but compatible functionalities),
+- 2: patches (bugfixes, security updates etc.)
+
+~ patch / minor version update allowed
+(~1.2.3 will match all 1.2.x but not 1.3.x versions),
+^ major version update allowed
+(^1.2.3 will use releases from 1.2.3 to < 2.0.0),
+
 # VS extensions & fonts & themes
 
 - Live Server,
@@ -70,6 +90,12 @@ or (this is recommended if we want to have prettier config globally, for all the
 - shift + option + down arrow -> duplicate line;
 - command + d -> select next occurrence;
 - command + shift + l -> select all occurrences;
+- highlight, then cmd + d -> highlight the same words,
+
+- cmd + / -> comment,
+- cmd + b -> hide explorer,
+- ctrl + ` -> toggle terminal,
+- cmd + shift + p -> search (palette),
 
 # UNIX commands
 

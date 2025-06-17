@@ -8,21 +8,23 @@ let myname: string = "Dave";
 let myage: number = 42;
 let isHappy: boolean = true;
 let album: any;
+// union ypes
 let postId: string | number;
 let isActive: number | boolean;
 let re: RegExp = /\w+/g;
-const sum = (a: number, b: string) => {
+
+// functions
+const sum = (a: number, b: number): number => {
   return a + b;
 };
 
 // arrays
-let stringArr = ["one", "two", "three"];
-let numberArr = [1, 2, 3, 4, 5, 6, 7];
-let mixedArr = ["hundred", 210, true];
-let emptyArr = [];
-let band: string[] = [];
+let stringArr: string[] = ["one", "two", "three"];
+let numberArr: number[] = [1, 2, 3, 4, 5, 6, 7];
+let mixedArr: (string | number | boolean)[] = ["hundred", 210, true];
+let emptyArr: string[] = [];
 
-// tuples (array of locked lenght and with elements of locked types)
+// tuples (arrays of stated lenght and with elements of locked types)
 let mytuple: [string, number, boolean] = ["one", 1, true];
 /* as opposed to: */ let mixedArr2 = ["hej", 123, false];
 

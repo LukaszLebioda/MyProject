@@ -1,0 +1,17 @@
+pipeline {
+  agent any
+  stages {
+    stage('Check code') {
+      steps {
+        git(url: 'https://github.com/LukaszLebioda/MyProject.git', branch: 'master', poll: true)
+      }
+    }
+
+    stage('Print message') {
+      steps {
+        echo 'After git clon'
+      }
+    }
+
+  }
+}
