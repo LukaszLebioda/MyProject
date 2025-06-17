@@ -12,6 +12,27 @@ npm install -D / npm install --save-dev (as devDependency)
 npm install -g (globally)
 npm install --save-exact (installs the exact version, not ~ or ^),
 
+# process.argv
+
+It's an array of arguments passed to the script while executing a script in cli, where arg[0] is a path to node executable, arg[1] is a path to file to be executed, and args after that are optional, e.g.:
+[
+'/path/to/node',
+'/ath/to/myscript.js',
+'arg3(optional)',
+'arg4(optional)
+]
+
+script:
+const name = process.argv[2];
+const age = process.argv[3];
+console.log(`Hello ${name}, you're ${age}!`);
+
+input:
+node hello.js Wookie 43
+
+output:
+Hello Wookie, you're 43!
+
 # Prettier
 
 - recommended package to integrate Prettier with ESlint:
