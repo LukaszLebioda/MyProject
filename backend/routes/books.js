@@ -1,6 +1,12 @@
 const express = require("express");
-const router = express.Router();
+// const router = express.Router();
 const { createBook, getBook, getBooks, updateBook, deleteBook } = require("../controllers/bookController.js");
+const requireAuth = require("../middleware/requireAuth");
+
+const router = express.Router();
+
+// require auth for all workout routes
+router.use(requireAuth);
 
 // GET all books
 router.get("/", getBooks);
