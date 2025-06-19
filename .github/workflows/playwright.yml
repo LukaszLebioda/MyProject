@@ -1,0 +1,66 @@
+name: MyProject
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build-and-test: # job name can be changed
+    runs-on: ubuntu-latest
+
+    # services:
+    #   mongo:
+    #     image: mongo:latest
+    #     ports: [27017:27017]
+    #     options: --health-cmd="mongosh --eval 'db.adminCommand(\"ping\")'" --health-interval=10s --health-timeout=5s --health-retries=5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 20
+
+      - name: Install backend...
+        run: |
+          echo "Installing backend..."
+          cd backend
+          npm ci
+          npm run dev
+
+      # - name: Wait for backend to be ready
+      #   run: |
+      #     npx wait-on http://localhost:4000
+
+      # - name: Install frontend dependencies
+      #   run: |
+      #     echo Installing frontend...
+      #     cd frontend
+      #     # npm ci
+      #     npm run dev
+
+      # - name: Install test dependencies
+      #   run: |
+      #     echo Installing tests...
+      #     cd tests
+      #     # npm ci
+
+      # - name: Build frontend
+      #   run: |
+      #     cd frontend
+      #     npm run build
+
+      # - name: Start backend (in background)
+      #   run: |
+      #     cd backend
+      #     npm run start:test &
+      #   env:
+      #     MONGO_URL: mongodb://localhost:27017/testdb
+
+      # - name: Run tests
+      #   run: |
+      #     echo Hello world!!
+      #     cd tests
+      #     npm run test:ci
