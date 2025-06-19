@@ -1,28 +1,21 @@
-// npm start, npm run start
-// React app accessible at http://localhost:3000/
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // pages & components
-import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Home from './pages/Home'
+import Navbar from './components/Navbar'
 
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
         <div className="pages">
           <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-          </Routes>
-          <Routes>
-            <Route path="/signup" element={<Signup />} />
+            <Route 
+              path="/" 
+              element={<Home />} 
+            />
           </Routes>
         </div>
       </BrowserRouter>
@@ -31,3 +24,4 @@ function App() {
 }
 
 export default App;
+

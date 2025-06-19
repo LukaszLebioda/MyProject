@@ -1,54 +1,32 @@
-// npm run dev -> to run server with nodemon
-const express = require("express");
-const mongoose = require("mongoose");
-require("dotenv").config();
-const bookRoutes = require("./routes/books.js");
-const userRoutes = require("./routes/user.js");
-const port = process.env.PORT;
-const mongoURI = process.env.MONGO_URI;
+require('dotenv').config()
+
+const express = require('express')
+const mongoose = require('mongoose')
+const workoutRoutes = require('./routes/workouts')
 
 // express app
-const app = express();
+const app = express()
 
-// // listen for requests
-// // we want to start the server only after connecting with db
-// // so we moved this code into mongoDB connection declaration
-// app.listen(port, () => {
-//   console.log(`Listening on port ${port}...`);
-//   console.log(`Server started at http://localhost:${port}`);
-// });
+// middleware
+app.use(express.json())
 
-// middleware (runs globally after every request)
-app.use(express.json()); // allows to use json body in requests
 app.use((req, res, next) => {
-  console.log(req.path, req.method);
-  next(); // moves to next middleware
-});
+  console.log(req.path, req.method)
+  next()
+})
 
-// API routes ("localhost:4000/api/books/")
-app.use("/api/books", bookRoutes); // "/api/books" as prefix to routes
-// instead of:
-// app.get("/", (req, res) => {
-//   res.json({ mssg: "Welcome to the app" });
-//   //   res.send("Server is ready...");
-//   //   res.sendFile("./index.html");
-// });
-app.use("/api/user", userRoutes);
+// routes
+app.use('/api/workouts', workoutRoutes)
 
-// connect to db (async, returns promise)
-mongoose
-  .connect(mongoURI)
+// connect to db
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("Connected to database");
-    // listen for requests
-    // we want to start the server only after connecting with db
-    // so we moved this code into mongoDB connection declaration
-    app.listen(port, () => {
-      console.log(`Listening on port ${port}`);
-      console.log(`Server started at http://localhost:${port}`);
-    });
+    console.log('connected to database')
+    // listen to port
+    app.listen(process.env.PORT, () => {
+      console.log('listening for requests on port', process.env.PORT)
+    })
   })
-  .catch((error) => {
-    console.log("Error connecting to MongoDB");
-    console.log(error);
-  });
+  .catch((err) => {
+    console.log(err)
+  }) 

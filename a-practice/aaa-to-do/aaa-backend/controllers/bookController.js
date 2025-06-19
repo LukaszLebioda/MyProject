@@ -1,4 +1,4 @@
-const Book = require("./../models/bookModel.js");
+const Book = require("../models/bookModel.js");
 const mongoose = require("mongoose");
 
 // get all books
@@ -75,11 +75,7 @@ const updateBook = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "Invalid book ID" });
   }
-  const book = await Book.findOneAndUpdate(
-    { _id: id },
-    { ...req.body },
-    { new: true }
-  );
+  const book = await Book.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true });
   if (!book) {
     return res.status(404).json({ error: "Book not found" });
   }

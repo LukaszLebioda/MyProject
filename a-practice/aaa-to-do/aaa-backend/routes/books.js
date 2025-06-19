@@ -1,7 +1,7 @@
 const express = require("express");
 // const router = express.Router();
 const { createBook, getBook, getBooks, updateBook, deleteBook } = require("../controllers/bookController.js");
-const requireAuth = require("../middleware/requireAuth");
+const requireAuth = require("../middleware/requireAuth.js");
 
 const router = express.Router();
 
