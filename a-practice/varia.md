@@ -69,6 +69,32 @@ or (this is recommended if we want to have prettier config globally, for all the
 - go to VS Code stettings -> json,
 - paste prettier configuration directly to json file,
 
+# SSH
+
+1. First generate private key (restricted, kept locally only) and public key (.pub, kept publicly on a Bitbucket or GitHub server):
+   ssh-keygen -t ed25519 -C "yourname@email.com"
+
+- ssh-keygen alone would generate an RSA key which is deprecated,
+- that's why type -t ed25519 to use better encrypting algorithm,
+- optionally we can type -b 256 to use 256-byte algorithm,
+
+2. The terminal output is:
+   "Enter file in which to save the key (/Users/llebioda/.ssh/id_ed25519):"
+
+- (optionally) change path (/Users/llebioda/.ssh/) or file name (id_ed25519) ,
+- or hit enter to accept default values,
+- passphrase is optional,
+
+3. Now we can list keys in our .ssh directory:
+   ls -l ~/.ssh
+
+4. And read the file with the public key:
+   cat ~/.ssh/id_ed25519.pub
+
+5. Copy the content of the public ssh file into Bitbucket / GitHub etc.:
+   exapmple of the content:
+   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAw3ml60+tnwfDsRbd9JWxT++/EIF65rJ/8cWizNKmEx my@email.com"
+
 # Versioning
 
 example of version: 1.28.2:
